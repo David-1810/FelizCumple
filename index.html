@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feliz Cumpleaños 🌊</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="pantalla-carga">
+        <div class="loader-icono">🌊☀️</div>
+        <p>Preparando sorpresa...</p>
+    </div>
+
+    <audio id="musica-fondo" src="musica/Ed Sheeran - Photograph.mp3" loop preload="auto"></audio>
+    <audio id="nota-voz" src="musica/nota-de-voz.mp3" preload="auto"></audio>
+
+    <div id="portada-inicio" onclick="comenzarPresentacion()">
+        <div class="sunset-icon">🌅🌴</div>
+        <h2>¡Feliz cumpleaños!</h2>
+        <div class="gift-icon">🎁</div>
+        <p>Te dejo un detallito aquí...<br>Toca para destaparlo</p>
+    </div>
+
+    <header>
+        <h1>Para la cumpleañera más hermosa 🌴✨</h1>
+    </header>
+
+    <div class="contador" id="contador">1 / 16</div>
+
+    <div class="slider-container" id="slider">
+
+        <div class="slide active">
+            <div class="media-container">
+                <img src="fotos/foto1.jpg" alt="Foto">
+            </div>
+            <div class="text-container">
+                <p>Hoy es el cumpleaños de mi persona favorita. Así como el sol ilumina la playa, espero que este nuevo
+                    año ilumine tu vida con momentos increíbles. ¡Felicidades, hermosa! 🌅💛</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <video class="normal-only" src="videos/video_grabacion_2.mp4" loop muted playsinline></video>
+                <video class="grabacion-only" src="videos/video1.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Amo compartir tiempo contigo; cada instante se siente tan buena vibra como una tarde frente al mar.
+                    🌅</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container"><video src="videos/video2.mp4" loop muted playsinline></video></div>
+            <div class="text-container">
+                <p>Tienes una sonrisa que ilumina muchísimo más que el sol de mediodía sobre la arena. ¡Feliz
+                    cumpleaños! 🌴✨</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto4.jpg" alt="Foto 4">
+                <video class="grabacion-only" src="videos/video3.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Es increíble la paz que transmites, suave y constante como el sonido de las olas en la orilla. 🌊</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto5.jpg" alt="Foto 5">
+                <video class="grabacion-only" src="videos/video4.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Me encanta recordar nuestras risas y las aventuras que hemos compartido. Eres una compañía
+                    inigualable. 😊</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container"><video src="videos/video5.mp4" loop muted playsinline></video></div>
+            <div class="text-container">
+                <p>Le pido a la vida que te regale tantas alegrías como gotas hay en la inmensidad del océano. 🌊</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto7.jpg" alt="Foto 7">
+                <video class="grabacion-only" src="videos/video6.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Eres alguien con quien siempre me siento bien. ¡Espero que disfrutes muchísimo de tu día especial! ✨
+                </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto8.jpg" alt="Foto 8">
+                <video class="grabacion-only" src="videos/video7.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Tu forma de ser hace que hasta el día más gris se sienta cálido, como estar mirando el horizonte.
+                    ☁️☀️</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <video class="normal-only" src="videos/video8.mp4" loop muted playsinline></video>
+                <video class="grabacion-only" src="videos/video8.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Deseo que todos tus sueños se cumplan, tan altos como las palmeras y tan profundos como el mar. 🌴🌊
+                </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto10.jpg" alt="Foto 10">
+                <video class="grabacion-only" src="videos/video9.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Tienes una esencia única que hace que todo a tu alrededor sea más bonito. Eres increíble. </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto11.jpg" alt="Foto 11">
+                <video class="grabacion-only" src="videos/video10.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Guardo cada recuerdo contigo como un tesoro que encuentras en la arena. 💎</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <img class="normal-only" src="fotos/foto12.jpg" alt="Foto 12">
+                <video class="grabacion-only" src="videos/video11.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Tu energía es como la brisa fresca que siempre alegra mis días. ¡Feliz cumpleaños, Reina Hermosa! ✨
+                </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <video class="normal-only" src="videos/video12.mp4" loop muted playsinline></video>
+                <img class="grabacion-only" src="fotos/foto15.jpg" alt="Foto 13">
+            </div>
+            <div class="text-container">
+                <p>Ojalá la vida nos siga regalando muchísimas más aventuras y momentos geniales juntos. 😉😊</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <video class="normal-only" src="videos/Nvideo13.mp4" loop muted playsinline></video>
+                <video class="grabacion-only" src="videos/video13.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Hoy celebro todo lo que eres y lo afortunado que me siento de poder tenerte tan cerca. 🎂</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="media-container">
+                <video src="videos/video14.mp4" loop muted playsinline></video>
+            </div>
+            <div class="text-container">
+                <p>Nunca olvides lo especial que eres para mí y lo hermosa que es tu forma de ser. ¡Feliz cumpleaños
+                    Reina! 💜</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="audio-final-slide">
+                <button class="btn-audio" id="playAudioBtn" onclick="toggleNotaVoz()">🎤</button>
+                <h3 style="font-family:'Dancing Script', cursive; font-size: 2rem; margin-bottom: 12px;">Una última
+                    sorpresa...</h3>
+                <p style="font-size: 1rem; opacity: 0.95; padding: 0 15px; line-height: 1.5;">
+                    Toca el micrófono
+                </p>
+            </div>
+            <div class="text-container" style="justify-content: flex-start; padding-top: 15px;">
+                <p>¡Gracias por ser tú! Espero que te haya gustado este detalle. 🌴🐚</p>
+                <a href="videos/video.mp4" download="Regalo_Cumpleaños.mp4" class="btn"
+                    style="text-decoration: none; display: inline-block; margin-top: 12px; background: #ffb74d; color: #004d40; font-size: 0.85rem;">
+                    📲 Descargar video de recuerdo
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="navigation">
+        <button class="btn" id="prevBtn">Atrás</button>
+        <button class="btn" id="nextBtn">Siguiente</button>
+    </div>
+
+    <div class="decoracion"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
