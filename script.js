@@ -126,9 +126,12 @@ function showSlide(index) {
     if (!presentacionComenzada) return;
     if (notaVoz && !notaVoz.paused) pausarNotaVoz();
     
-    // Pausar TODOS los videos de la diapositiva actual antes de cambiar
+    // Pausar TODOS los videos de la diapositiva actual y resetearlos para liberar memoria
     const currentVideos = slides[currentIndex].querySelectorAll('video');
-    currentVideos.forEach(v => v.pause());
+    currentVideos.forEach(v => {
+        v.pause();
+        v.currentTime = 0; // Esto ayuda a limpiar la memoria caché del video anterior
+    });
     
     slides[currentIndex].classList.remove('active');
     currentIndex = index;
