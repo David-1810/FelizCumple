@@ -141,6 +141,20 @@ function showSlide(index) {
     contador.textContent = `${currentIndex + 1} / ${slides.length}`;
     
     playCurrentMedia(); // Reproducir solo el medio visible de la nueva diapositiva
+
+    // =================================================================
+    // TRUCO DE PRECARGA INTELIGENTE PARA LA SIGUIENTE DIAPOSITIVA
+    // =================================================================
+    let nextIndex = (currentIndex + 1) % slides.length;
+    const nextVideos = slides[nextIndex].querySelectorAll('video');
+    nextVideos.forEach(v => {
+        // Si el video de la próxima diapo aún no está totalmente cargado, lo forzamos en segundo plano
+        if (v.getAttribute('preload') !== 'auto') {
+            v.setAttribute('preload', 'auto');
+            v.load(); // El navegador empieza a descargarlo silenciosamente mientras el usuario ve la diapo actual
+        }
+    });
+    // =================================================================
 }
 
 nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
