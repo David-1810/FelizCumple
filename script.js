@@ -99,8 +99,8 @@ function comenzarPresentacion() {
 function toggleNotaVoz() {
     if (notaVoz.paused) {
         let bajar = setInterval(() => {
-            if (musicaFondo.volume > 0.2) musicaFondo.volume -= 0.1;
-            else { musicaFondo.volume = 0.15; clearInterval(bajar); }
+            if (musicaFondo.volume > 0.15) musicaFondo.volume -= 0.1;
+            else { musicaFondo.volume = 0.09; clearInterval(bajar); }
         }, 50);
         notaVoz.play();
         playAudioBtn.textContent = "⏸️";
@@ -118,8 +118,27 @@ function pausarNotaVoz() {
     }, 50);
 }
 
+// =========================================================
+// NUEVA LÓGICA: MOSTRAR TICKET AL TERMINAR LA NOTA DE VOZ
+// =========================================================
 if (notaVoz) {
-    notaVoz.addEventListener('ended', () => { pausarNotaVoz(); });
+    notaVoz.addEventListener('ended', () => { 
+        pausarNotaVoz(); 
+        
+        // MOSTRAR EL TICKET FLOTANTE POR ENCIMA DE TODO
+        const overlayTicket = document.getElementById('overlay-ticket');
+        if (overlayTicket) {
+            overlayTicket.style.display = 'flex'; // Lo activa en pantalla centrando el ticket
+            
+            // Retraso mínimo para que la animación de difuminado (fade-in) entre suave
+            setTimeout(() => {
+                overlayTicket.style.opacity = '1';
+            }, 50);
+            
+            // Volvemos a lanzar una lluvia de confeti para celebrar que terminó el audio
+            lanzarConfeti();
+        }
+    });
 }
 
 function showSlide(index) {
@@ -169,3 +188,14 @@ slider.addEventListener('touchend', e => {
     if (te < ts - 40) showSlide(currentIndex + 1);
     if (te > ts + 40) showSlide(currentIndex - 1);
 });
+
+// FUNCIÓN PARA CERRAR EL TICKET POR SI QUIERE SEGUIR EXPLORANDO LA TARJETA
+function cerrarTicket() {
+    const overlayTicket = document.getElementById('overlay-ticket');
+    if (overlayTicket) {
+        overlayTicket.style.opacity = '0';
+        setTimeout(() => {
+            overlayTicket.style.display = 'none';
+        }, 1200); // Espera a que termine la animación para ocultarlo por completo
+    }
+}
