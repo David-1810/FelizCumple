@@ -10,6 +10,9 @@ const playAudioBtn = document.getElementById('playAudioBtn');
 let currentIndex = 0;
 let presentacionComenzada = false;
 
+// Variable para rastrear si el ticket fue desbloqueado
+let ticketDesbloqueado = false;
+
 // CARGA Y VERIFICACIÓN DE MODO GRABACIÓN
 window.addEventListener('load', () => {
     const pc = document.getElementById('pantalla-carga');
@@ -31,8 +34,8 @@ window.addEventListener('load', () => {
             
             // Avanzar tocando la pantalla a tu propio ritmo
             document.body.addEventListener('click', (e) => {
-                // Evita que cambie de diapositiva si tocas el botón de la nota de voz final
-                if (e.target.id === 'playAudioBtn' || e.target.closest('#playAudioBtn')) return;
+                // Evita que cambie de diapositiva si tocas el botón de la nota de voz final o el botón flotante
+                if (e.target.id === 'playAudioBtn' || e.target.closest('#playAudioBtn') || e.target.id === 'btn-abrir-ticket' || e.target.closest('#btn-abrir-ticket')) return;
                 
                 // Solo avanza si la presentación ya empezó y no estamos en la última foto
                 if (presentacionComenzada && currentIndex < slides.length - 1) {
@@ -118,26 +121,34 @@ function pausarNotaVoz() {
     }, 50);
 }
 
-// =========================================================
-// NUEVA LÓGICA: MOSTRAR TICKET AL TERMINAR LA NOTA DE VOZ
-// =========================================================
+// FUNCIÓN PARA ABRIR EL TICKET
+function abrirTicket() {
+    const overlayTicket = document.getElementById('overlay-ticket');
+    if (overlayTicket) {
+        overlayTicket.style.display = 'flex';
+        setTimeout(() => {
+            overlayTicket.style.opacity = '1';
+        }, 50);
+        lanzarConfeti();
+    }
+}
+
+// LÓGICA AL TERMINAR LA NOTA DE VOZ
 if (notaVoz) {
     notaVoz.addEventListener('ended', () => { 
         pausarNotaVoz(); 
         
-        // MOSTRAR EL TICKET FLOTANTE POR ENCIMA DE TODO
-        const overlayTicket = document.getElementById('overlay-ticket');
-        if (overlayTicket) {
-            overlayTicket.style.display = 'flex'; // Lo activa en pantalla centrando el ticket
-            
-            // Retraso mínimo para que la animación de difuminado (fade-in) entre suave
-            setTimeout(() => {
-                overlayTicket.style.opacity = '1';
-            }, 50);
-            
-            // Volvemos a lanzar una lluvia de confeti para celebrar que terminó el audio
-            lanzarConfeti();
+        // El ticket queda desbloqueado
+        ticketDesbloqueado = true;
+        
+        // Mostrar el botón flotante
+        const btnTicket = document.getElementById('btn-abrir-ticket');
+        if (btnTicket) {
+            btnTicket.classList.add('visible');
         }
+        
+        // Abrir el ticket automáticamente la primera vez
+        abrirTicket();
     });
 }
 
@@ -160,6 +171,17 @@ function showSlide(index) {
     contador.textContent = `${currentIndex + 1} / ${slides.length}`;
     
     playCurrentMedia(); // Reproducir solo el medio visible de la nueva diapositiva
+
+    // OCULTAR O MOSTRAR EL BOTÓN FLOTANTE
+    const btnTicket = document.getElementById('btn-abrir-ticket');
+    if (btnTicket) {
+        // Solo se muestra si estamos en la última diapositiva (15) y ya desbloqueó el ticket
+        if (currentIndex === slides.length - 1 && ticketDesbloqueado) {
+            btnTicket.classList.add('visible');
+        } else {
+            btnTicket.classList.remove('visible');
+        }
+    }
 
     // =================================================================
     // TRUCO DE PRECARGA INTELIGENTE PARA LA SIGUIENTE DIAPOSITIVA

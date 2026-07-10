@@ -9,6 +9,20 @@
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ========================================= */
+        /* ANIMACIÓN Y CLASE PARA EL BOTÓN FLOTANTE  */
+        /* ========================================= */
+        @keyframes pulsarTicket {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.1); box-shadow: 0 4px 20px rgba(255, 183, 77, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        }
+        #btn-abrir-ticket.visible {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -213,6 +227,10 @@
     </div>
 
     <div class="decoracion"></div>
+
+    <button id="btn-abrir-ticket" onclick="abrirTicket()" style="display: none; position: fixed; top: 112px; right: 25px; width: 45px; height: 45px; background: #ffb74d; border: 2px solid #fff; border-radius: 50%; font-size: 1.3rem; justify-content: center; align-items: center; cursor: pointer; z-index: 999; animation: pulsarTicket 2s infinite; transition: opacity 0.6s ease; opacity: 0;">
+        🎟️
+    </button>
 
     <div id="overlay-ticket" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 1.2s ease;">
         
