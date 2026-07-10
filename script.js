@@ -103,7 +103,7 @@ function toggleNotaVoz() {
     if (notaVoz.paused) {
         let bajar = setInterval(() => {
             if (musicaFondo.volume > 0.15) musicaFondo.volume -= 0.1;
-            else { musicaFondo.volume = 0.09; clearInterval(bajar); }
+            else { musicaFondo.volume = 0.05; clearInterval(bajar); }
         }, 50);
         notaVoz.play();
         playAudioBtn.textContent = "⏸️";
